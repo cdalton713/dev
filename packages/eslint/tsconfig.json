@@ -1,0 +1,10 @@
+{
+  "extends": "../ts-configs/tsconfig.options.json",
+  "include": [
+    "**/*"
+  ],
+  "references": [],
+  "compilerOptions": {
+    "paths": {}
+  }
+}

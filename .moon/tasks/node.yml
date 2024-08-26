@@ -1,0 +1,104 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+implicitDeps:
+  - '^:build'
+
+implicitInputs:
+  - 'package.json'
+
+fileGroups:
+  sst:
+    - /.sst/**/*
+    - /.build/**/*
+  sst-build:
+    - src/**/*
+    - /ig-sst/**/*
+  inputs:
+    - "src/**/*"
+    - "__tests__/**/*"
+    - "tsconfig.json"
+    - "tsconfig.*.json"
+    - "/tsconfig.options.json"
+  outputs:
+    - "dist/**/*"
+    - "lib/**/*"
+  configs:
+    - "**/*.{md,mdx,yml,yaml,json}"
+  markdown:
+    - "**/*.{md,mdx}"
+  types:
+    - "types/**/*"
+
+tasks:
+  lint:
+    command: noop
+    deps:
+      - build
+    inputs:
+      - "@group(inputs)"
+      - "@group(types)"
+    options:
+      runDepsInParallel: false
+  lint_eslint:
+    command:
+      - "eslint"
+      # Support other extensions
+      - "--ext"
+      - ".js,.jsx,.ts,.tsx"
+      # Always fix and run extra checks
+      - "--fix"
+      - "--report-unused-disable-directives"
+      # Don't fail if a project has nothing to lint
+      - "--no-error-on-unmatched-pattern"
+      # Do fail if we encounter a fatal error
+      - "--exit-on-fatal-error"
+      # Only 1 ignore file is supported, so use the root
+      - "--ignore-path"
+      - "@in(0)"
+      - "--cache"
+      # Run in current dir
+      - "."
+    inputs:
+      - "/.eslintignore"
+      - "@globs(inputs)"
+      - "@group(types)"
+      - "*.config.*"
+      - "**/.eslintrc.*"
+      - "/.eslintrc.*"
+      - "/tsconfig.options.json"
+  lint_prettier:
+    command:
+      - "prettier"
+      # Use the same config for the entire repo
+      - "--config"
+      - "@in(4)"
+      # Use the same ignore patterns as well
+      - "--ignore-path"
+      - "@in(0)"
+      # Fail for unformatted code
+      - "--write"
+      # Run in current dir
+      - "."
+    inputs:
+      - "/.prettierignore"
+      - "@group(inputs)"
+      - "@globs(configs)"
+      - "@globs(markdown)"
+      - "/.prettierrc.json"
+    options:
+      retryCount: 3
+      outputStyle: buffer-only-failure
+  lint_tsc:
+    command:
+      - "tsc"
+      # Use incremental builds with project references
+      - "--build"
+      # Always use pretty output
+      - "--pretty"
+      # Use verbose logging to see affected projects
+    #       - "--verbose"
+    inputs:
+      # Source and test files
+      - "@group(inputs)"
+      # Type declarations
+      - "@group(types)"

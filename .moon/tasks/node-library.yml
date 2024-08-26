@@ -1,0 +1,17 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+tasks:
+  # https://moonrepo.dev/docs/guides/examples/packemon
+  build:
+    command: 'packemon'
+    args:
+      - 'build'
+      - '--addEngines'
+      - '--addExports'
+      - '--declaration'
+    inputs:
+      - '@group(inputs)'
+    outputs:
+      - 'lib'
+    env:
+      NODE_ENV: 'production'

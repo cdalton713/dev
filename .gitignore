@@ -1,0 +1,53 @@
+node_modules/
+*.d.ts
+**/*/tsconfig.tsbuildinfo
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/dataSources.xml
+
+# AWS User-specific
+.idea/**/aws.xml
+
+# Generated files
+.idea/**/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/libraries/
+
+.eslintcache
+
+packages/*/lib
+packages/*/dist
+packages/*/output
+packages/*/coverage
+.vscode/
+
+yarn-error.log
+.env
+
+**/.eslintcache
+**/*/.DS_Store
+.DS_Store
+
+# Yarn Installs
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# dependencies
+node_modules

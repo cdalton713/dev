@@ -1,0 +1,22 @@
+# https://moonrepo.dev/docs/config/toolchain
+$schema: "https://moonrepo.dev/schemas/toolchain.json"
+
+node:
+  version: "20.9.0"
+  packageManager: "yarn"
+  yarn:
+    version: "4.4.0"
+  addEnginesConstraint: true
+  dedupeOnLockfileChange: false
+  dependencyVersionFormat: workspace
+  syncProjectWorkspaceDependencies: false
+  syncVersionManagerConfig: nvm
+typescript:
+  projectConfigFileName: tsconfig.json
+  rootConfigFileName: tsconfig.json
+  createMissingConfig: true
+  includeProjectReferenceSources: false
+  includeSharedTypes: false
+  routeOutDirToCache: false
+  syncProjectReferences: true
+  syncProjectReferencesToPaths: true

@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "@cdalton713/dev",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@types/eslint": "^8.56.11",
+    "@types/node": "^20.14.8",
+    "eslint": "^8.57.0",
+    "lerna": "^8.1.8",
+    "packemon": "^4.1.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "yarn@4.4.0",
+  "engines": {
+    "node": "20.9.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

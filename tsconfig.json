@@ -1,0 +1,9 @@
+{
+  "extends": "packages/ts-configs/tsconfig.options.json",
+  "files": [],
+  "references": [
+    {
+      "path": "packages/eslint"
+    }
+  ]
+}

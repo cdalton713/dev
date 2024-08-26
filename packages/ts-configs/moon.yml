@@ -1,0 +1,9 @@
+type: 'library'
+
+toolchain:
+  typescript:
+    disabled: true
+
+workspace:
+  inheritedTasks:
+    exclude: ['build', 'typecheck']
